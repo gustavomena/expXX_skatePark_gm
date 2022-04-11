@@ -24,7 +24,7 @@ app.use(expressFileUpload({
 
 app.use('/bootstrap', express.static(__dirname + '/node_modules/bootstrap/dist/css'));
 app.use('/bootstrapJS', express.static(__dirname + '/node_modules/bootstrap/dist/js'));
-app.use('/swal', express.static(__dirname + '/node_modules/sweetalert/dist'));
+
 app.use('/public', express.static(__dirname + '/public'));
 
 app.set('view engine', 'handlebars')
