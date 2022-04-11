@@ -1,0 +1,53 @@
+
+<div class="py-4">
+      <h2>Administración</h2>
+      <hr class="w-50 container" />
+      <table class="table w-50 m-auto">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Foto</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Años de experiencia</th>
+            <th scope="col">Especialidad</th>
+            <th scope="col">Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+            {{#each skaters}}
+          <tr>
+            <th scope="row">{{this.id}}</th>
+            <td><img src="/public/imgs/{{this.email}}.jpg" alt="{{this.nombre}}" width="100px" height="100px"></td>
+            <td>{{this.nombre}}</td>
+            <td>{{this.anos_experiencia}}</td>
+            <td>{{this.especialidad}}</td>
+            <td><input type="checkbox" onclick="cambioCheckbox{{this.id}}()" id="{{this.id}}" /></td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+    <script>
+    {{#each skaters}}
+      function cambioCheckbox{{this.id}} () {
+      let checkbox = document.getElementById("{{this.id}}")
+        if (checkbox.checked) {
+            alert("Se ha cambiado el estado ha 'Aprobado'") 
+            window.location.href = "/?id={{this.id}}&estado=true"
+        } else{
+            alert("Se ha cambiado el estado a 'En revisión'") 
+            window.location.href = "/?id={{this.id}}&estado=false"
+
+        }
+      }
+
+      function checkingBox{{this.id}}() {
+        let checkbox = document.getElementById("{{this.id}}")
+        if ({{this.estado}} == true) {
+            checkbox.setAttribute("checked", "checked")
+        }
+
+      }
+      checkingBox{{this.id}}()
+    {{/each}}
+    </script>
