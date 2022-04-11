@@ -5,3 +5,9 @@
 3.- usar 'npm run migrate:db' para crear el esquema de la base de datos
 4.- iniciar servidor 'npm start'
 5.- para ejecutar las pruebas, utilizar el comando 'npm cypress:open'
+
+APP
+
+administrador : admin@admin.com 
+contraseña: 123456
+
