@@ -54,9 +54,9 @@ app.post('/registrado', async (req, res) =>{
     const {email, skater_name, password, password2, experience_yrs, specialty} = req.body
     const {photo} = req.files
     const isValid = false
-    const new_photo = `${email}.jpg`
+    const new_photo = `${skater_name}.jpg`
     if (password == password2) {
-        photo.mv(`${__dirname}/public/imgs/${email}.jpg`)
+        photo.mv(`${__dirname}/public/imgs/${skater_name}.jpg`)
         await newSkater(email, skater_name, password, experience_yrs, specialty, new_photo, isValid)
         res.send(`<script>alert('El usuario ha sido creado éxitosamente'); window.location.href = '/registro'</script>`)
     } else {
