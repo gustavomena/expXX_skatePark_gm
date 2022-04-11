@@ -7,7 +7,7 @@
 5.- para ejecutar las pruebas, utilizar el comando 'npm cypress:open'
 
 APP
-
+https://dl-skate-park.herokuapp.com/
 administrador : admin@admin.com 
 contraseña: 123456
 
