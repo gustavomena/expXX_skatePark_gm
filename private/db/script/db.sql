@@ -1,4 +1,0 @@
-CREATE TABLE skaters (id SERIAL, email VARCHAR(50) NOT NULL, skater_name
-VARCHAR(25) NOT NULL, password VARCHAR(25) NOT NULL, experience_yrs
-INT NOT NULL, specialty VARCHAR(50) NOT NULL, photo VARCHAR(255) NOT
-NULL, valid BOOLEAN NOT NULL);
