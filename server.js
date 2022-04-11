@@ -7,7 +7,7 @@ const jwt = require('jsonwebtoken');
 const {newSkater, getSkaters, setSkater, setValid, deleteSkater} = require('./private/db/queries');
 
 const {key} = require('./jwt/key');
-//const { setValid } = require('./private/db/queries');
+
 const port = process.env.PORT || 5000;
 
 
