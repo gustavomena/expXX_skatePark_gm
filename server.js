@@ -24,6 +24,7 @@ app.use(expressFileUpload({
 
 app.use('/bootstrap', express.static(__dirname + '/node_modules/bootstrap/dist/css'));
 app.use('/bootstrapJS', express.static(__dirname + '/node_modules/bootstrap/dist/js'));
+app.use('/swal', express.static(__dirname + '/node_modules/sweetalert/dist'));
 app.use('/public', express.static(__dirname + '/public'));
 
 app.set('view engine', 'handlebars')
@@ -51,12 +52,12 @@ app.get('/registro', (req, res) => {
 
 app.post('/registrado', async (req, res) =>{ 
     const {email, skater_name, password, password2, experience_yrs, specialty} = req.body
-    const {foto} = req.files
+    const {photo} = req.files
     const isValid = false
-    const foto2 = `${email}.jpg`
+    const new_photo = `${email}.jpg`
     if (password == password2) {
-        foto.mv(`${__dirname}/public/imgs/${email}.jpg`)
-        await newSkater(email, skater_name, password, experience_yrs, specialty, foto2, isValid)
+        photo.mv(`${__dirname}/public/imgs/${email}.jpg`)
+        await newSkater(email, skater_name, password, experience_yrs, specialty, new_photo, isValid)
         res.send(`<script>alert('El usuario ha sido creado éxitosamente'); window.location.href = '/registro'</script>`)
     } else {
         res.send(`<script>alert('Las contraseñas no coinciden'); window.location.href = '/registro'</script>`)
@@ -96,7 +97,7 @@ app.get('/signin', async (req, res) => {
             data: auth
         }, key)
 
-        res.send(`<script>alert('Email y contraseña válidos, ahora deberás actualizar tus datos'); window.location.href = '/actualizar?token=${token}'</script>`)
+        res.send(`<script>alert('vamos!, ahora debes actualizar tus datos'); window.location.href = '/actualizar?token=${token}'</script>`)
     } else {
         res.status(401).send(`<script>alert('Email y contraseña no válidos'); window.location.href = '/login'</script>`)
     }
@@ -126,7 +127,7 @@ app.post('/actualizando', async (req, res) => {
         res.send(`<script>alert('Se han actualizado los datos'); window.location.href = '/'</script>`)
         
     }else {
-        res.send(`<script>alert('Las nuevas contraseñas deben ser iguales, volviendo al Login'); window.location.href = '/login'</script>`)
+        res.send(`<script>alert('Las nuevas contraseñas deben ser iguales'); window.location.href = '/login'</script>`)
     }
 
 })
@@ -134,7 +135,7 @@ app.post('/actualizando', async (req, res) => {
 app.get('/delete', async (req, res) =>{
     const {id} = req.query
     await deleteSkater(id)
-    res.send(`<script>alert('Se han eliminado los datos del Skater con id ${id}, volviendo al inicio'); window.location.href = '/'</script>`)
+    res.send(`<script>alert('Se han eliminado los datos'); window.location.href = '/'</script>`)
 })
 
 
